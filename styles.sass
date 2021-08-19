@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+  
+@mixin textGradient()
+  background: -webkit-linear-gradient(#373B44, #4286f4)
+  background-clip: text
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+
+@mixin font()
+  font-family: 'Roboto Mono', monospace
+
+@mixin uppercase()
+  text-transform: uppercase
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+.container
+  width: 100vw
+  height: 100vh
+  @include font
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  .title-div
+    h1
+      @include textGradient
+      @include uppercase
+      margin-bottom: 0.8rem
+
+  .stopwatch-div
+    @include textGradient
+    font-size: 2.5rem
+    margin-bottom: 1.8rem
+
+  .button-div
+    display: grid
+    place-items: center
+
+    button
+      width: 200px
+      padding: 1rem 0
+      margin-bottom: 2rem
+      background: linear-gradient(to right top, #5c6375, #4286f4)
+      border: none
+      border-radius: 0.5rem
+      font-size: 1.2rem
+      @include uppercase
+      @include font
+      font-weight: bold
+      color: white
+      position: relative
+
+      &:after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: #272727
+        border-radius: 0.5rem
+        opacity: 0
+        transition: 0.2s all ease
+
+      &:hover:after
+        opacity: 0.3
+        cursor: pointer
+  
+  hr
+    width: 200px
+    height: 5px
+    border: none
+    border-radius: 0.8rem
+    background: linear-gradient(to right top, #5c6375, #4286f4)
+
+  .laps
+    @include textGradient
+    margin-bottom: 1rem
+
+  .lap-div
+    width: 280px
+    height: 200px
+    display: flex
+    flex-direction: column
+    align-items: center
+    font-size: 1.3rem
+    overflow-y: scroll
+
+    .lap-span
+      @include textGradient
+  
+  ::-webkit-scrollbar 
+    width: 10px
+
+  ::-webkit-scrollbar-track 
+    background: #f1f1f1
+    border-radius: 0.5rem
+
+  ::-webkit-scrollbar-thumb 
+    background: #888
+    border-radius: 0.5rem
+
+  ::-webkit-scrollbar-thumb:hover 
+    background: #555
+
+@media (min-width: 2560px)
+  .container
+    .title-div
+      h1
+        font-size: 4rem
+
+    .stopwatch-div
+      font-size: 5rem
+      margin-bottom: 2rem
+
+    .button-div
+      button
+        font-size: 2.2rem
+
+    .laps
+      font-size: 3rem
+
+    .lap-div
+      width: 700px
+
+      .lap-span
+        font-size: 2.5rem
